@@ -640,7 +640,7 @@
         ✓ Secure payment &nbsp; • &nbsp; ✓ No PDF download button &nbsp; • &nbsp; ✓ Personal access
       </div>
       <div style="font-size: 0.8rem; color: #64748b; margin-top: 14px;">
-        Use coupon <strong>SSC25</strong> for 25% OFF. Available to the first 50 buyers.
+        Use coupon <strong>WELCOME50</strong> for 50% OFF. Available to the first 50 buyers.
       </div>
     </div>
   </div>
@@ -731,11 +731,11 @@
     function applyCoupon() {
       const code = document.getElementById("couponInput").value.trim().toUpperCase();
       const msg = document.getElementById("couponMessage");
-      if (code === "SSC25") {
+      if (code === "WELCOME50") {
         couponApplied = true;
-        payableAmount = 149.25;
-        document.getElementById("finalPrice").textContent = "₹149.25";
-        msg.textContent = "✓ 25% discount applied. Valid for the first 50 successful uses.";
+        payableAmount = 99.50;
+        document.getElementById("finalPrice").textContent = "₹99.50";
+        msg.textContent = "✓ 50% discount applied. Valid for the first 50 successful uses.";
         msg.style.color = "#34d399";
       } else {
         couponApplied = false;
@@ -760,7 +760,7 @@
        * hosted checkout/payment-link URL.
        *
        * The server/payment provider must calculate the final amount,
-       * validate SSC25, enforce the first-50 redemption limit, and only
+       * validate WELCOME50, enforce the first-50 redemption limit, and only
        * grant online reader access after a verified successful payment.
        */
       const paymentUrl = "YOUR_PAYMENT_CHECKOUT_URL";
@@ -772,7 +772,7 @@
       const params = new URLSearchParams({
         name: name,
         email: email,
-        coupon: couponApplied ? "SSC25" : "",
+        coupon: couponApplied ? "WELCOME50" : "",
         amount: payableAmount.toFixed(2)
       });
       window.location.href = paymentUrl + (paymentUrl.includes("?") ? "&" : "?") + params.toString();

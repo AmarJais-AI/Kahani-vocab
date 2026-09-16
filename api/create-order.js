@@ -1,4 +1,15 @@
 export default async function handler(req, res) {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://amarjais-ai.github.io"
+  );
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
@@ -21,10 +32,8 @@ export default async function handler(req, res) {
       amount: 19900,
       currency: "INR",
       receipt: `vocab_${Date.now()}`,
-
       offers: ["offer_TcJ6j2zmNLbkRa"],
       force_offer: true,
-
       notes: {
         product: "Kahani-Kahani Mein 1000 Vocabulary",
         buyer_name: name || "",
@@ -37,7 +46,7 @@ export default async function handler(req, res) {
       {
         method: "POST",
         headers: {
-          "Authorization": `Basic ${auth}`,
+          Authorization: `Basic ${auth}`,
           "Content-Type": "application/json"
         },
         body: JSON.stringify(orderData)
